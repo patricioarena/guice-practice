@@ -14,18 +14,19 @@ import lombok.RequiredArgsConstructor;
 public class LightSailboatFactoryImpl implements VehicleFactory {
 
   @Override
-  public Vehicle apply(TypeVehicle typeVehicle, StateVehicle stateVehicle) {
+  public Vehicle apply(final TypeVehicle typeVehicle, final StateVehicle stateVehicle) {
 
-    final var sailboat = LightSailboat.builder();
-    sailboat.typeVehicle(typeVehicle.getDrivingType());
-    sailboat.state(State.buildFrom(stateVehicle));
+    final var lightSailboatBuilder = LightSailboat.builder();
+    lightSailboatBuilder.typeVehicle(typeVehicle.getDrivingType());
+    lightSailboatBuilder.state(State.buildFrom(stateVehicle));
 
-    buildEngine(typeVehicle, sailboat);
+    buildEngine(typeVehicle, lightSailboatBuilder);
 
-    return sailboat.build();
+    return lightSailboatBuilder.build();
   }
 
-  public void buildEngine(TypeVehicle typeVehicle, LightSailboat.LightSailboatBuilder sailboat) {
+  private void buildEngine(final TypeVehicle typeVehicle,
+      final LightSailboat.LightSailboatBuilder sailboat) {
     if (typeVehicle.hasEngine()) {
       sailboat.motor(Motor.empty());
     }

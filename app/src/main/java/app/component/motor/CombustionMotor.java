@@ -1,5 +1,7 @@
 package app.component.motor;
 
+import app.constant.enums.FuelType;
+
 /**
  * Representa un motor de combustión interna con propiedades específicas como
  * el número de cilindros y el tipo de combustible.
@@ -10,12 +12,12 @@ public class CombustionMotor extends Motor {
   /**
    * Número de cilindros del motor.
    */
-  private int cylinders;
+  private final int cylinders;
 
   /**
    * Tipo de combustible utilizado por el motor (por ejemplo, Gasolina, Diesel).
    */
-  private String fuelType;
+  private final FuelType fuelType;
 
   /**
    * Constructor para inicializar un motor de combustión con su potencia,
@@ -25,8 +27,8 @@ public class CombustionMotor extends Motor {
    * @param cylinders Número de cilindros del motor.
    * @param fuelType Tipo de combustible utilizado por el motor.
    */
-  public CombustionMotor(int power, int cylinders, String fuelType) {
-    super("Combustion", power);
+  public CombustionMotor(final int power, final int cylinders, final FuelType fuelType) {
+    super(FuelType.COMBUSTION.name(), power);
     this.cylinders = cylinders;
     this.fuelType = fuelType;
   }

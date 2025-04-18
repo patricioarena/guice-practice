@@ -14,18 +14,19 @@ import lombok.RequiredArgsConstructor;
 public class CarFactoryImpl implements VehicleFactory {
 
   @Override
-  public Vehicle apply(TypeVehicle typeVehicle, StateVehicle stateVehicle) {
+  public Vehicle apply(final TypeVehicle typeVehicle, final StateVehicle stateVehicle) {
 
-    final var car = Car.builder();
-    car.typeVehicle(typeVehicle.getDrivingType());
-    car.state(State.buildFrom(stateVehicle));
+    final var carBuilder = Car.builder();
+    carBuilder.typeVehicle(typeVehicle.getDrivingType());
+    carBuilder.state(State.buildFrom(stateVehicle));
 
-    buildEngine(typeVehicle, car);
+    buildEngine(typeVehicle, carBuilder);
 
-    return car.build();
+    return carBuilder.build();
   }
 
-  public void buildEngine(TypeVehicle typeVehicle, Car.CarBuilder car) {
+  private void buildEngine(final TypeVehicle typeVehicle,
+      final Car.CarBuilder car) {
     if (typeVehicle.hasEngine()) {
       car.motor(Motor.empty());
     }

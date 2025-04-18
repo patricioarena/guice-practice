@@ -9,13 +9,13 @@ public abstract class Motor {
    * Tipo de motor (por ejemplo, Combustión o Eléctrico).
    * Representa la categoría o naturaleza del motor.
    */
-  protected String type;
+  protected final String type;
 
   /**
    * Potencia del motor en HP o kW.
    * Representa la capacidad de trabajo del motor.
    */
-  protected int power;
+  protected final int power;
 
   /**
    * Estado del motor (encendido o apagado).
@@ -29,7 +29,7 @@ public abstract class Motor {
    * @param type Tipo de motor.
    * @param power Potencia del motor.
    */
-  public Motor(String type, int power) {
+  public Motor(final String type, final int power) {
     this.type = type;
     this.power = power;
     this.isOn = false;

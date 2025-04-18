@@ -1,5 +1,3 @@
 package app.model;
 
-public interface Vehicle {
-
-}
+public interface Vehicle {}

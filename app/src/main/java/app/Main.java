@@ -6,10 +6,14 @@ package app;
 import app.component.motor.CombustionMotor;
 import app.component.motor.ElectricMotor;
 import app.component.motor.Motor;
-import app.config.General;
+import app.config.AppModule;
+import app.constant.enums.FuelType;
 import app.constant.enums.StateVehicle;
+import app.model.Car;
+import app.model.LightSailboat;
 import app.usecase.VehicleAdapter;
 import com.google.inject.Guice;
+import com.google.inject.Injector;
 import java.util.Scanner;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,17 +35,17 @@ public class Main {
     // injector.getAllBindings().forEach((key, binding) -> System.out.println(key + " -> " +
     // binding));
 
-    final var injector = Guice.createInjector(new General());
-    final var adapter = injector.getInstance(VehicleAdapter.class);
+    final Injector injector = Guice.createInjector(new AppModule());
+    final VehicleAdapter adapter = injector.getInstance(VehicleAdapter.class);
 
-    final var boat = adapter.createLightSailboat(StateVehicle.NEW);
+    final LightSailboat boat = adapter.createLightSailboat(StateVehicle.NEW);
     log.info("{}", boat);
 
-    final var car = adapter.createCar(StateVehicle.NEW);
+    final Car car = adapter.createCar(StateVehicle.NEW);
     log.info("{}", car);
 
     // Create a combustion motor
-    Motor combustionMotor = new CombustionMotor(150, 4, "Gasoline");
+    final Motor combustionMotor = new CombustionMotor(150, 4, FuelType.GASOLINE);
     combustionMotor.start();
     combustionMotor.showDetails();
     combustionMotor.stop();
@@ -49,7 +53,7 @@ public class Main {
     System.out.println("----------");
 
     // Create an electric motor
-    Motor electricMotor = new ElectricMotor(100, 75);
+    final Motor electricMotor = new ElectricMotor(100, 75);
     electricMotor.start();
     electricMotor.showDetails();
     electricMotor.stop();
@@ -57,9 +61,9 @@ public class Main {
 //    menu(adapter);
   }
 
-  private static void menu(VehicleAdapter adapter) {
+  private static void menu(final VehicleAdapter adapter) {
     final var scanner = new Scanner(System.in);
-    var exit = false;
+    boolean exit = false;
 
     while (!exit) {
       System.out.println("Menú:");
@@ -68,7 +72,7 @@ public class Main {
       System.out.println("3. Salir");
       System.out.print("Seleccione una opción: ");
 
-      final int option = scanner.nextInt();
+      final var option = scanner.nextInt();
 
       switch (option) {
         case 1:

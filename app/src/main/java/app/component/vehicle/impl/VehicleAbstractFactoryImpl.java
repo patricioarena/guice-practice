@@ -16,16 +16,16 @@ import lombok.extern.slf4j.Slf4j;
  * Clase que implementa una fábrica general de vehículos. Utiliza un mapa para asociar tipos de
  * vehículos con sus respectivas fábricas.
  */
-@Singleton
 @Slf4j
-public class VehicleFactoryImpl implements VehicleFactory {
+@Singleton
+public class VehicleAbstractFactoryImpl implements VehicleFactory {
 
   private final Map<TypeVehicle, VehicleFactory> factories;
 
   @Inject
-  public VehicleFactoryImpl(
-      @Named("CarFactory") VehicleFactory carFactory,
-      @Named("LightSailboatFactory") VehicleFactory sailboatFactory
+  public VehicleAbstractFactoryImpl(
+      final @Named("CarFactory") VehicleFactory carFactory,
+      final @Named("LightSailboatFactory") VehicleFactory sailboatFactory
   ) {
     // Inicialización del mapa en el constructor
     factories = new EnumMap<>(TypeVehicle.class);
@@ -44,8 +44,8 @@ public class VehicleFactoryImpl implements VehicleFactory {
    * @throws UnsupportedVehicleTypeException Si el tipo de vehículo no está soportado.
    */
   @Override
-  public Vehicle apply(TypeVehicle vehicleType, StateVehicle state) {
-    VehicleFactory factory = factories.get(vehicleType);
+  public Vehicle apply(final TypeVehicle vehicleType, final StateVehicle state) {
+    final VehicleFactory factory = factories.get(vehicleType);
     if (factory == null) {
       throw new UnsupportedVehicleTypeException(
           "Tipo de vehículo no soportado: " + vehicleType.name()
