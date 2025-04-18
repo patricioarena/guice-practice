@@ -17,7 +17,7 @@ repos:
         stages: [ pre-commit ]
       - id: no-commit-to-branch
         stages: [ pre-commit ]
-        args: [ --branch, master, --branch, develop, --pattern, feature/integration.* ]
+        args: [ --branch, main, --branch, develop, --pattern, feature/integration.* ]
   - repo: local
     hooks:
       - id: config-pre-push-hook
