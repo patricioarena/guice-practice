@@ -1,6 +1,6 @@
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
-# Created by https://www.toptal.com/developers/gitignore/api/react,linux,java,intellij+iml,intellij+all,intellij,gradle,angular
-# Edit at https://www.toptal.com/developers/gitignore?templates=react,linux,java,intellij+iml,intellij+all,intellij,gradle,angular
+# Created by https://www.toptal.com/developers/gitignore/api/react,linux,java,intellij+iml,intellij+all,intellij,gradle,angular,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=react,linux,java,intellij+iml,intellij+all,intellij,gradle,angular,visualstudiocode
 
 ### Angular ###
 ## Angular ##
@@ -318,6 +318,25 @@ psd
 thumb
 sketch
 
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
 ### Gradle ###
 .gradle
 **/build/
@@ -345,7 +364,7 @@ gradle-app.setting
 # Java heap dump
 *.hprof
 
-# End of https://www.toptal.com/developers/gitignore/api/react,linux,java,intellij+iml,intellij+all,intellij,gradle,angular
+# End of https://www.toptal.com/developers/gitignore/api/react,linux,java,intellij+iml,intellij+all,intellij,gradle,angular,visualstudiocode
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
