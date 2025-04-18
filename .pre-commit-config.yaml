@@ -8,7 +8,6 @@ repos:
       - id: pretty-format-java
         stages: [ pre-commit ]
         args: [ --autofix ]
-
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
