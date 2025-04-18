@@ -3,6 +3,9 @@
  */
 package app;
 
+import app.component.motor.CombustionMotor;
+import app.component.motor.ElectricMotor;
+import app.component.motor.Motor;
 import app.config.General;
 import app.constant.enums.StateVehicle;
 import app.usecase.VehicleAdapter;
@@ -36,6 +39,20 @@ public class Main {
 
     final var car = adapter.createCar(StateVehicle.NEW);
     log.info("{}", car);
+
+    // Create a combustion motor
+    Motor combustionMotor = new CombustionMotor(150, 4, "Gasoline");
+    combustionMotor.start();
+    combustionMotor.showDetails();
+    combustionMotor.stop();
+
+    System.out.println("----------");
+
+    // Create an electric motor
+    Motor electricMotor = new ElectricMotor(100, 75);
+    electricMotor.start();
+    electricMotor.showDetails();
+    electricMotor.stop();
 
 //    menu(adapter);
   }

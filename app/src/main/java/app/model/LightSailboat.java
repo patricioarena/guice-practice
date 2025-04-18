@@ -1,5 +1,6 @@
 package app.model;
 
+import app.component.motor.Motor;
 import app.model.vo.State;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,6 +11,6 @@ import lombok.ToString;
 @ToString
 public class LightSailboat implements Vehicle{
   private String typeVehicle;
-  private String engine;
+  private Motor motor;
   private State state;
 }

@@ -1,5 +1,6 @@
 package app.component.vehicle.impl;
 
+import app.component.motor.Motor;
 import app.component.vehicle.VehicleFactory;
 import app.constant.enums.StateVehicle;
 import app.constant.enums.TypeVehicle;
@@ -26,7 +27,8 @@ public class CarFactoryImpl implements VehicleFactory {
 
   public void buildEngine(TypeVehicle typeVehicle, Car.CarBuilder car) {
     if (typeVehicle.hasEngine()) {
-      car.engine("Some engine");
+      car.motor(Motor.empty());
     }
+    car.motor(Motor.empty());
   }
 }

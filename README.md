@@ -1,4 +1,38 @@
-Resumen de patrones de diseño aplicados en el código hasta el momento:
+### Para correr el proyecto, se necesitan los siguientes requisitos:
+
+1. **Java**:
+   - Versión mínima recomendada: **Java 17.0.5** o superior.
+   - Asegúrate de tener configurada la variable de entorno `JAVA_HOME` apuntando a la instalación de Java.
+
+2. **Gradle**:
+   - El proyecto utiliza Gradle como herramienta de construcción.
+   - Versión mínima recomendada: **Gradle 7.3** (según el archivo `settings.gradle` generado).
+   - Puedes instalar Gradle manualmente o usar el wrapper incluido (`./gradlew` en macOS/Linux o `gradlew.bat` en Windows).
+
+3. **Dependencias**:
+   - Las dependencias del proyecto se gestionan automáticamente por Gradle. Solo necesitas ejecutar los comandos de Gradle para descargarlas.
+
+4. **Configuración del entorno**:
+   - Asegúrate de tener acceso a internet para que Gradle pueda descargar las dependencias necesarias en la primera ejecución.
+
+5. **Comandos básicos para ejecutar el proyecto**:
+   - Para compilar el proyecto:
+     ```bash
+     ./gradlew build
+     ```
+   - Para ejecutar la aplicación:
+     ```bash
+     ./gradlew run
+     ```
+
+6. **IDE recomendado**:
+   - Puedes usar IntelliJ IDEA (como en tu caso) para abrir y trabajar con el proyecto. Asegúrate de que el IDE esté configurado para usar la versión correcta de Java y Gradle.
+
+Con estos pasos y configuraciones, deberías poder compilar y ejecutar el proyecto sin problemas.
+
+---
+
+### Resumen de patrones de diseño aplicados en el código hasta el momento:
 
 1. **Inyección de Dependencias (Dependency Injection)**:
     - Se utiliza el framework Guice para gestionar las dependencias entre clases. Por ejemplo, en `General`, se configuran los bindings para que las interfaces como `VehicleAdapter` y `VehicleFactory` se asocien con sus implementaciones (`VehicleAdapterImpl`, `VehicleFactoryImpl`, etc.).
