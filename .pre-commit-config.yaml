@@ -1,0 +1,36 @@
+repos:
+  # Next hooks are Code Quality hooks.
+  # If you want them to run on each commit, uncomment them
+  # These are OPTIONAL.
+  - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+    rev: v2.14.0
+    hooks:
+      - id: pretty-format-java
+        stages: [ pre-commit ]
+        args: [ --autofix ]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        stages: [ pre-commit ]
+      - id: end-of-file-fixer
+        stages: [ pre-commit ]
+      - id: no-commit-to-branch
+        stages: [ pre-commit ]
+        args: [ --branch, master, --branch, develop, --pattern, feature/integration.* ]
+  - repo: local
+    hooks:
+      - id: config-pre-push-hook
+        name: Config pre-push Hook
+        entry: sh scripts/config-pre-push-hook-required.sh
+        language: system
+        fail_fast: true
+        always_run: true
+        stages: [ pre-commit ]
+      - id: javax-check
+        name: Previene el uso de javax en favor de jakarta
+        entry: sh scripts/pre-commit-jakarta-lint.sh
+        language: system
+        pass_filenames: true
+        stages: [ pre-commit ]
