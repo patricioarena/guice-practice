@@ -4,12 +4,9 @@
 package app;
 
 import app.config.General;
-import app.enums.StateVehicle;
-import app.model.Car;
-import app.model.LightSailboat;
+import app.constant.enums.StateVehicle;
 import app.usecase.VehicleAdapter;
 import com.google.inject.Guice;
-import com.google.inject.Injector;
 import java.util.Scanner;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,12 +28,21 @@ public class Main {
     // injector.getAllBindings().forEach((key, binding) -> System.out.println(key + " -> " +
     // binding));
 
-
-    Injector injector = Guice.createInjector(new General());
+    final var injector = Guice.createInjector(new General());
     final var adapter = injector.getInstance(VehicleAdapter.class);
 
-    Scanner scanner = new Scanner(System.in);
-    boolean exit = false;
+    final var boat = adapter.createLightSailboat(StateVehicle.NEW);
+    log.info("{}", boat);
+
+    final var car = adapter.createCar(StateVehicle.NEW);
+    log.info("{}", car);
+
+//    menu(adapter);
+  }
+
+  private static void menu(VehicleAdapter adapter) {
+    final var scanner = new Scanner(System.in);
+    var exit = false;
 
     while (!exit) {
       System.out.println("Menú:");
@@ -45,15 +51,15 @@ public class Main {
       System.out.println("3. Salir");
       System.out.print("Seleccione una opción: ");
 
-      int option = scanner.nextInt();
+      final int option = scanner.nextInt();
 
       switch (option) {
         case 1:
-          Car car = adapter.createCar(StateVehicle.NEW);
+          final var car = adapter.createCar(StateVehicle.NEW);
           System.out.println("Coche creado: " + car);
           break;
         case 2:
-          LightSailboat boat = adapter.createLightSailboat(StateVehicle.NEW);
+          final var boat = adapter.createLightSailboat(StateVehicle.NEW);
           System.out.println("Velero ligero creado: " + boat);
           break;
         case 3:

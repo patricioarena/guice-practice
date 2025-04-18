@@ -1,8 +1,8 @@
 package app.usecase;
 
-import app.components.vehicle.GeneralVehicleFactoryImpl;
-import app.enums.StateVehicle;
-import app.enums.TypeVehicle;
+import app.component.vehicle.impl.VehicleFactoryImpl;
+import app.constant.enums.StateVehicle;
+import app.constant.enums.TypeVehicle;
 import app.model.Car;
 import app.model.LightSailboat;
 import app.model.Vehicle;
@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class VehicleAdapterImpl implements VehicleAdapter {
 
-    private final GeneralVehicleFactoryImpl factory;
+    private final VehicleFactoryImpl factory;
 
     public Car createCar(StateVehicle state) {
         Vehicle vehicle = factory.apply(TypeVehicle.CAR, state);

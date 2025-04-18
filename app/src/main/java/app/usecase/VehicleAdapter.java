@@ -1,6 +1,6 @@
 package app.usecase;
 
-import app.enums.StateVehicle;
+import app.constant.enums.StateVehicle;
 import app.model.Car;
 import app.model.LightSailboat;
 

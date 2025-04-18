@@ -1,8 +1,9 @@
-package app.components.vehicle;
+package app.component.vehicle.impl;
 
+import app.component.vehicle.VehicleFactory;
 import app.custom.exception.UnsupportedVehicleTypeException;
-import app.enums.StateVehicle;
-import app.enums.TypeVehicle;
+import app.constant.enums.StateVehicle;
+import app.constant.enums.TypeVehicle;
 import app.model.Vehicle;
 import com.google.inject.Singleton;
 import jakarta.inject.Inject;
@@ -17,12 +18,12 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Singleton
 @Slf4j
-public class GeneralVehicleFactoryImpl implements VehicleFactory {
+public class VehicleFactoryImpl implements VehicleFactory {
 
   private final Map<TypeVehicle, VehicleFactory> factories;
 
   @Inject
-  public GeneralVehicleFactoryImpl(
+  public VehicleFactoryImpl(
       @Named("CarFactory") VehicleFactory carFactory,
       @Named("LightSailboatFactory") VehicleFactory sailboatFactory
   ) {

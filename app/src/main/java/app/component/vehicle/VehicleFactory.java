@@ -1,9 +1,9 @@
-package app.components.vehicle;
+package app.component.vehicle;
 
 import java.util.function.BiFunction;
 
-import app.enums.StateVehicle;
-import app.enums.TypeVehicle;
+import app.constant.enums.StateVehicle;
+import app.constant.enums.TypeVehicle;
 import app.model.Vehicle;
 
 @FunctionalInterface
