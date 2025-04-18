@@ -26,7 +26,7 @@
      ```
 
 6. **IDE recomendado**:
-   - Puedes usar IntelliJ IDEA (como en tu caso) para abrir y trabajar con el proyecto. Asegúrate de que el IDE esté configurado para usar la versión correcta de Java y Gradle.
+   - Puedes usar IntelliJ IDEA para abrir y trabajar con el proyecto. Asegúrate de que el IDE esté configurado para usar la versión correcta de Java y Gradle.
 
 Con estos pasos y configuraciones, deberías poder compilar y ejecutar el proyecto sin problemas.
 
